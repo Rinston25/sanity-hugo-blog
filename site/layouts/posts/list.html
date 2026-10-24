@@ -1,0 +1,8 @@
+{{ define "main" }}
+  <h1>All posts</h1>
+  <div class="post-grid">
+    {{ range .Pages }}
+      {{ partial "post-card.html" . }}
+    {{ end }}
+  </div>
+{{ end }}

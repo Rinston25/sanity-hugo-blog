@@ -1,0 +1,23 @@
+{{ define "main" }}
+  <article class="post">
+    <header class="post__header">
+      {{ with .Params.categories }}{{ partial "category-badge.html" (index . 0) }}{{ end }}
+      <h1>{{ .Title }}</h1>
+      <p class="post__meta">
+        <time datetime="{{ .Date.Format "2006-01-02T15:04:05Z07:00" }}">{{ .Date.Format "2 January 2006" }}</time>
+      </p>
+    </header>
+
+    {{ with .Params.heroImage }}
+      <figure class="post__hero">
+        <img src="{{ . }}" alt="{{ $.Params.heroAlt }}">
+      </figure>
+    {{ end }}
+
+    <div class="post__content">
+      {{ .Content }}
+    </div>
+  </article>
+
+  {{ with .Params.authors }}{{ partial "author-card.html" (index . 0) }}{{ end }}
+{{ end }}

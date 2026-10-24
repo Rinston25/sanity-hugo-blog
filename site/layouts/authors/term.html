@@ -1,0 +1,15 @@
+{{ define "main" }}
+  <header class="term-header">
+    <p class="term-header__label">Author</p>
+    {{ with .Params.image }}
+      <img class="term-header__image" src="{{ . }}" alt="{{ $.Params.imageAlt }}" width="120" height="120">
+    {{ end }}
+    <h1>{{ .Title }}</h1>
+    {{ with .Params.bio }}<p>{{ . }}</p>{{ end }}
+  </header>
+  <div class="post-grid">
+    {{ range .Pages }}
+      {{ partial "post-card.html" . }}
+    {{ end }}
+  </div>
+{{ end }}

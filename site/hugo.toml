@@ -1,0 +1,13 @@
+# "/" keeps every link relative to the site root, so the same build works locally and on Netlify.
+baseURL = "/"
+languageCode = "en"
+title = "The Blog"
+
+[params]
+  description = "Articles about web development, content strategy and productivity."
+
+# Taxonomy: singular name = front matter plural name.
+# A post with  categories: ["productivity"]  is grouped under /categories/productivity/.
+[taxonomies]
+  category = "categories"
+  author = "authors"

@@ -1,0 +1,16 @@
+{{/* Receives a post page. Used on the home page, the posts list and category/author pages. */}}
+<article class="post-card">
+  {{ with .Params.heroImage }}
+    <a class="post-card__image-link" href="{{ $.RelPermalink }}" tabindex="-1" aria-hidden="true">
+      <img src="{{ . }}" alt="{{ $.Params.heroAlt }}" loading="lazy">
+    </a>
+  {{ end }}
+  <div class="post-card__body">
+    {{ with .Params.categories }}{{ partial "category-badge.html" (index . 0) }}{{ end }}
+    <h2 class="post-card__title"><a href="{{ .RelPermalink }}">{{ .Title }}</a></h2>
+    <p class="post-card__meta">
+      <time datetime="{{ .Date.Format "2006-01-02T15:04:05Z07:00" }}">{{ .Date.Format "2 January 2006" }}</time>
+    </p>
+    {{ with .Params.description }}<p class="post-card__excerpt">{{ . }}</p>{{ end }}
+  </div>
+</article>

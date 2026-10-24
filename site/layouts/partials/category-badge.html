@@ -1,0 +1,4 @@
+{{/* Receives a category slug (a string). Shows nothing if that category page does not exist. */}}
+{{ with site.GetPage (printf "/categories/%s" .) }}
+  <a class="badge" href="{{ .RelPermalink }}">{{ .Title }}</a>
+{{ end }}

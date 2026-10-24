@@ -1,0 +1,12 @@
+{{ define "main" }}
+  <header class="term-header">
+    <p class="term-header__label">Category</p>
+    <h1>{{ .Title }}</h1>
+    {{ with .Params.description }}<p>{{ . }}</p>{{ end }}
+  </header>
+  <div class="post-grid">
+    {{ range .Pages }}
+      {{ partial "post-card.html" . }}
+    {{ end }}
+  </div>
+{{ end }}

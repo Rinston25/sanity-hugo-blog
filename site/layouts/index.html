@@ -1,0 +1,10 @@
+{{ define "main" }}
+  <h1>Latest posts</h1>
+  <div class="post-grid">
+    {{/* Pages are already sorted newest first, so "first 6" gives the latest six. */}}
+    {{ range first 6 (where site.RegularPages "Section" "posts") }}
+      {{ partial "post-card.html" . }}
+    {{ end }}
+  </div>
+  <p><a href="{{ "/posts/" | relURL }}">See all posts</a></p>
+{{ end }}
