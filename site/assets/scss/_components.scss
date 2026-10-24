@@ -1,0 +1,161 @@
+// Small reusable pieces.
+
+.badge {
+  display: inline-block;
+  padding: 0.125rem 0.625rem;
+  border-radius: 999px;
+  background: $color-badge-bg;
+  color: $color-badge-text;
+  font-size: 0.875rem;
+  font-weight: 600;
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+.post-card {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid $color-border;
+  border-radius: $radius;
+  overflow: hidden;
+  background: $color-bg;
+}
+
+.post-card__image-link img {
+  width: 100%;
+  aspect-ratio: 3 / 2; // keeps cards the same height even if photos differ
+  object-fit: cover;
+}
+
+.post-card__body {
+  padding: $space-m;
+}
+
+.post-card__title {
+  margin: $space-s 0;
+  font-size: 1.25rem;
+
+  a {
+    color: $color-text;
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
+
+.post-card__meta,
+.post__meta {
+  margin: 0 0 $space-s;
+  font-size: 0.9375rem;
+  color: $color-muted;
+}
+
+.post-card__excerpt {
+  margin: 0;
+}
+
+// Single post page
+.post__header h1 {
+  margin-top: $space-m;
+}
+
+.post__hero {
+  margin: $space-l 0;
+
+  img {
+    width: 100%;
+    aspect-ratio: 3 / 2;
+    object-fit: cover;
+    border-radius: $radius;
+  }
+}
+
+.post__content {
+  font-size: 1.125rem;
+
+  ul {
+    padding-left: $space-l;
+    margin: 0 0 $space-m;
+  }
+
+  blockquote {
+    margin: $space-l 0;
+    padding: $space-s $space-l;
+    border-left: 4px solid $color-link;
+    background: $color-surface;
+    font-style: italic;
+
+    p:last-child {
+      margin-bottom: 0;
+    }
+  }
+}
+
+.author-card {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  column-gap: $space-m;
+  margin-top: $space-xl;
+  padding: $space-m;
+  border-radius: $radius;
+  background: $color-surface;
+}
+
+.author-card__label {
+  grid-column: 1 / -1; // the heading spans the whole card
+  margin: 0 0 $space-s;
+  font-size: 1rem;
+  color: $color-muted;
+}
+
+.author-card__image {
+  grid-row: span 2;
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.author-card__name {
+  margin: 0;
+  font-weight: 700;
+}
+
+.author-card__bio {
+  grid-column: 2;
+  margin: 0;
+}
+
+// Header on category and author pages
+.term-header {
+  max-width: $content-width;
+  margin: 0 auto $space-l;
+}
+
+.term-header__label {
+  margin: 0;
+  font-size: 0.875rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: $color-muted;
+}
+
+.term-header__image {
+  margin: $space-s 0;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.term-list {
+  padding-left: $space-l;
+
+  span {
+    color: $color-muted;
+  }
+}

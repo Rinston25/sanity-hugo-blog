@@ -8,8 +8,14 @@
   {{ with .Params.description | default site.Params.description }}
     <meta name="description" content="{{ . }}">
   {{ end }}
+  {{/* Hugo Pipes: compile Sass to CSS, shrink it, and add a hash to the file name so browsers re-download it after changes. */}}
+  {{ with resources.Get "scss/main.scss" }}
+    {{ $css := . | css.Sass | resources.Minify | resources.Fingerprint }}
+    <link rel="stylesheet" href="{{ $css.RelPermalink }}">
+  {{ end }}
 </head>
 <body>
+  <a class="skip-link" href="#main">Skip to content</a>
   {{ partial "header.html" . }}
   <main id="main">
     {{ block "main" . }}{{ end }}

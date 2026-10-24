@@ -1,0 +1,87 @@
+// The one breakpoint: tablets and larger.
+@mixin tablet-up {
+  @media (min-width: 48em) {
+    @content;
+  }
+}
+
+// Link that lets keyboard users jump past the navigation. Hidden until focused.
+.skip-link {
+  position: absolute;
+  top: -4rem;
+  left: $space-m;
+  padding: $space-s $space-m;
+  background: $color-bg;
+  z-index: 10;
+
+  &:focus {
+    top: $space-s;
+  }
+}
+
+.site-header {
+  display: flex;
+  flex-direction: column;
+  gap: $space-s;
+  padding: $space-m;
+  border-bottom: 1px solid $color-border;
+
+  @include tablet-up {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: $space-m $space-xl;
+  }
+}
+
+.site-header__title {
+  font-size: 1.375rem;
+  font-weight: 700;
+  color: $color-text;
+  text-decoration: none;
+}
+
+.site-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: $space-m;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+main {
+  max-width: $page-width;
+  margin: 0 auto;
+  padding: $space-m $space-m $space-xl;
+
+  @include tablet-up {
+    padding: $space-l $space-xl $space-xl;
+  }
+}
+
+.site-footer {
+  padding: $space-l $space-m;
+  border-top: 1px solid $color-border;
+  text-align: center;
+  color: $color-muted;
+}
+
+// Posts grid: one column on phones, 2-3 columns on larger screens (as many as fit).
+.post-grid {
+  display: grid;
+  gap: $space-l;
+  margin: $space-l 0;
+
+  @include tablet-up {
+    grid-template-columns: repeat(auto-fill, minmax(17rem, 1fr));
+  }
+}
+
+// Article text stays about 720px wide so lines are comfortable to read.
+.post,
+.author-card {
+  max-width: $content-width;
+  margin-left: auto;
+  margin-right: auto;
+}

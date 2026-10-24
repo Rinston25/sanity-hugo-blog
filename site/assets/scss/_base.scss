@@ -1,0 +1,54 @@
+// Element defaults. Written for small screens first.
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: $font-body;
+  font-size: 1.0625rem;
+  line-height: 1.6;
+  color: $color-text;
+  background: $color-bg;
+}
+
+h1,
+h2,
+h3 {
+  line-height: 1.25;
+  margin: $space-l 0 $space-s;
+}
+
+h1 {
+  font-size: 1.875rem;
+}
+
+h2 {
+  font-size: 1.5rem;
+}
+
+h3 {
+  font-size: 1.25rem;
+}
+
+p {
+  margin: 0 0 $space-m;
+}
+
+a {
+  color: $color-link;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+// Keyboard users must always see where they are.
+:focus-visible {
+  outline: 3px solid $color-focus;
+  outline-offset: 2px;
+}

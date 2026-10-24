@@ -1,6 +1,6 @@
 # "/" keeps every link relative to the site root, so the same build works locally and on Netlify.
 baseURL = "/"
-languageCode = "en"
+locale = "en"
 title = "The Blog"
 
 [params]
