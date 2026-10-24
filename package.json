@@ -1,0 +1,19 @@
+{
+  "name": "sanity-hugo-blog",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "seed": "node scripts/seed.js",
+    "sync": "node scripts/sync.js",
+    "dev": "node scripts/sync.js && hugo server -s site",
+    "build": "node scripts/sync.js && hugo --minify -s site"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "dependencies": {
+    "@sanity/client": "^7.0.0",
+    "dotenv": "^17.0.0"
+  }
+}
