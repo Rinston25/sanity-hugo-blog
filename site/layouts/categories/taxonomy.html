@@ -1,0 +1,19 @@
+{{/* The /categories/ page: one card per category. */}}
+{{ define "main" }}
+  <h1>{{ .Title }}</h1>
+  <p class="page-intro">Browse posts by topic</p>
+
+  <div class="post-grid">
+    {{ range .Data.Terms.Alphabetical }}
+      {{/* Inside "with", the dot changes, so keep the category page in a variable. */}}
+      {{ $category := .Page }}
+      <article class="post-card">
+        <div class="post-card__body">
+          <h2 class="post-card__title"><a href="{{ $category.RelPermalink }}">{{ $category.Title }}</a></h2>
+          {{ with $category.Params.description }}<p class="post-card__excerpt">{{ . }}</p>{{ end }}
+          <p class="post-card__meta">{{ .Count }} {{ if eq .Count 1 }}post{{ else }}posts{{ end }}</p>
+        </div>
+      </article>
+    {{ end }}
+  </div>
+{{ end }}

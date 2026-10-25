@@ -57,6 +57,11 @@
 
 .post-card__excerpt {
   margin: 0;
+
+  // On the /categories/ and /authors/ cards the post count comes after the text.
+  + .post-card__meta {
+    margin-top: $space-s;
+  }
 }
 
 // Single post page
@@ -184,6 +189,22 @@
 
 .term-header__image {
   margin: $space-s 0;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+// Short line under the h1 on the /categories/ and /authors/ pages
+.page-intro {
+  max-width: $content-width;
+  margin-top: 0;
+  color: $color-muted;
+}
+
+// Round author photo on the /authors/ cards
+.term-card__image {
+  width: 80px;
+  height: 80px;
+  margin-bottom: $space-s;
   border-radius: 50%;
   object-fit: cover;
 }

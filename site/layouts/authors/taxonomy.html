@@ -1,0 +1,23 @@
+{{/* The /authors/ page: one card per author. */}}
+{{ define "main" }}
+  <h1>{{ .Title }}</h1>
+  <p class="page-intro">Meet the writers</p>
+
+  <div class="post-grid">
+    {{ range .Data.Terms.Alphabetical }}
+      {{/* Inside "with", the dot changes, so keep the author page in a variable. */}}
+      {{ $author := .Page }}
+      <article class="post-card">
+        <div class="post-card__body">
+          {{ with $author.Params.image }}
+            <img class="term-card__image" src="{{ . }}" alt="{{ $author.Params.imageAlt }}" width="80" height="80" loading="lazy">
+          {{ end }}
+          <h2 class="post-card__title"><a href="{{ $author.RelPermalink }}">{{ $author.Title }}</a></h2>
+          {{/* Bios can be long, so show only the start of it on the card. */}}
+          {{ with $author.Params.bio }}<p class="post-card__excerpt">{{ strings.Truncate 120 . }}</p>{{ end }}
+          <p class="post-card__meta">{{ .Count }} {{ if eq .Count 1 }}post{{ else }}posts{{ end }}</p>
+        </div>
+      </article>
+    {{ end }}
+  </div>
+{{ end }}
