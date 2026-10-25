@@ -159,3 +159,58 @@
     color: $color-muted;
   }
 }
+
+// Table of contents on a post
+.toc {
+  margin: $space-l 0;
+  padding: $space-m;
+  border: 1px solid $color-border;
+  border-radius: $radius;
+
+  ul {
+    margin: 0;
+    padding-left: $space-l;
+  }
+
+  // Hugo nests h3 entries inside the h2 list item
+  ul ul {
+    margin-top: 0.25rem;
+  }
+}
+
+.toc__title {
+  margin: 0 0 $space-s;
+  font-size: 1rem;
+}
+
+// Share button and its "Link copied!" message
+.share {
+  display: flex;
+  align-items: center;
+  gap: $space-s;
+  margin-bottom: $space-s;
+}
+
+.share-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  min-height: 2.75rem; // comfortable tap target on phones
+  padding: 0 $space-m;
+  border: 1px solid $color-border;
+  border-radius: $radius;
+  background: $color-surface;
+  color: $color-link;
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+
+  &:hover {
+    background: $color-badge-bg;
+  }
+}
+
+.share__message {
+  color: $color-muted;
+  font-size: 0.9375rem;
+}

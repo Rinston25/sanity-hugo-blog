@@ -5,7 +5,9 @@
       <h1>{{ .Title }}</h1>
       <p class="post__meta">
         <time datetime="{{ .Date.Format "2006-01-02T15:04:05Z07:00" }}">{{ .Date.Format "2 January 2006" }}</time>
+        &middot; {{ .ReadingTime }} min read
       </p>
+      {{ partial "share-button.html" . }}
     </header>
 
     {{ with .Params.heroImage }}
@@ -14,10 +16,20 @@
       </figure>
     {{ end }}
 
+    {{/* Only show the table of contents if the post has headings, so we never output an empty box. */}}
+    {{ if .Fragments.Headings }}
+      <div class="toc">
+        <h2 id="toc-heading" class="toc__title">On this page</h2>
+        {{ .TableOfContents }}
+      </div>
+    {{ end }}
+
     <div class="post__content">
       {{ .Content }}
     </div>
   </article>
 
   {{ with .Params.authors }}{{ partial "author-card.html" (index . 0) }}{{ end }}
+
+  <script src="{{ "js/share.js" | relURL }}" defer></script>
 {{ end }}
