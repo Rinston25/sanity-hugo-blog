@@ -2,7 +2,7 @@
 {{ with site.GetPage (printf "/authors/%s" .) }}
   {{/* Inside "with image", the dot becomes the image URL, so keep the author page in a variable. */}}
   {{ $author := . }}
-  <aside class="author-card" aria-labelledby="author-card-heading">
+  <aside class="author-card{{ if $author.Params.image }} author-card--with-image{{ end }}" aria-labelledby="author-card-heading">
     <h2 id="author-card-heading" class="author-card__label">About the author</h2>
     {{ with $author.Params.image }}
       <img class="author-card__image" src="{{ . }}" alt="{{ $author.Params.imageAlt }}" width="80" height="80" loading="lazy">

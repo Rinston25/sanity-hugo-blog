@@ -96,10 +96,9 @@
   }
 }
 
+// Without an image the card is a simple single column: label, name, bio.
 .author-card {
   display: grid;
-  grid-template-columns: auto 1fr;
-  column-gap: $space-m;
   margin-top: $space-xl;
   padding: $space-m;
   border-radius: $radius;
@@ -107,14 +106,12 @@
 }
 
 .author-card__label {
-  grid-column: 1 / -1; // the heading spans the whole card
   margin: 0 0 $space-s;
   font-size: 1rem;
   color: $color-muted;
 }
 
 .author-card__image {
-  grid-row: span 2;
   width: 80px;
   height: 80px;
   border-radius: 50%;
@@ -127,14 +124,53 @@
 }
 
 .author-card__bio {
-  grid-column: 2;
-  margin: 0;
+  margin: $space-s 0 0;
 }
 
-// Header on category and author pages
+// With an image (class added in the author-card partial).
+// Phones: image and name share a row, the bio gets the full width below.
+.author-card--with-image {
+  grid-template-columns: auto 1fr;
+  column-gap: $space-m;
+
+  .author-card__label,
+  .author-card__bio {
+    grid-column: 1 / -1;
+  }
+
+  .author-card__name {
+    align-self: center;
+  }
+
+  // Tablet and up: image on the left, name and bio stacked on the right.
+  @include tablet-up {
+    .author-card__image {
+      grid-row: span 2;
+    }
+
+    .author-card__name,
+    .author-card__bio {
+      grid-column: 2;
+    }
+
+    .author-card__name {
+      align-self: end;
+    }
+
+    .author-card__bio {
+      margin-top: 0;
+    }
+  }
+}
+
+// Header on category and author pages. It fills the same width as the grid below,
+// but paragraphs stay narrow so the lines are comfortable to read.
 .term-header {
-  max-width: $content-width;
-  margin: 0 auto $space-l;
+  margin-bottom: $space-l;
+
+  p {
+    max-width: $content-width;
+  }
 }
 
 .term-header__label {

@@ -5,6 +5,19 @@
   }
 }
 
+// Header, main and footer all use this, so their left and right edges line up.
+@mixin page-container {
+  max-width: $page-width;
+  margin: 0 auto;
+  padding-left: $space-m;
+  padding-right: $space-m;
+
+  @include tablet-up {
+    padding-left: $space-xl;
+    padding-right: $space-xl;
+  }
+}
+
 // Link that lets keyboard users jump past the navigation. Hidden until focused.
 .skip-link {
   position: absolute;
@@ -19,18 +32,23 @@
   }
 }
 
+// The border stays full width; the inner wrapper lines the content up with <main>.
 .site-header {
+  border-bottom: 1px solid $color-border;
+}
+
+.site-header__inner {
+  @include page-container;
   display: flex;
   flex-direction: column;
   gap: $space-s;
-  padding: $space-m;
-  border-bottom: 1px solid $color-border;
+  padding-top: $space-m;
+  padding-bottom: $space-m;
 
   @include tablet-up {
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
-    padding: $space-m $space-xl;
   }
 }
 
@@ -51,20 +69,24 @@
 }
 
 main {
-  max-width: $page-width;
-  margin: 0 auto;
-  padding: $space-m $space-m $space-xl;
+  @include page-container;
+  padding-top: $space-l;
+  padding-bottom: $space-xl;
 
   @include tablet-up {
-    padding: $space-l $space-xl $space-xl;
+    padding-top: $space-xl;
   }
 }
 
 .site-footer {
-  padding: $space-l $space-m;
   border-top: 1px solid $color-border;
-  text-align: center;
   color: $color-muted;
+}
+
+.site-footer__inner {
+  @include page-container;
+  padding-top: $space-l;
+  padding-bottom: $space-l;
 }
 
 // Posts grid: one column on phones, 2-3 columns on larger screens (as many as fit).
