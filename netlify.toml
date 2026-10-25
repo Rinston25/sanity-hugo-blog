@@ -1,0 +1,9 @@
+[build]
+  # npm run build = node scripts/sync.js && hugo --minify -s site
+  command = "npm run build"
+  publish = "site/public"
+
+[build.environment]
+  # Same Hugo version as local development, so both builds behave the same.
+  HUGO_VERSION = "0.168.0"
+  NODE_VERSION = "20"
